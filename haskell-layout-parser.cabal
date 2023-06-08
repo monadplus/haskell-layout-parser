@@ -1,0 +1,52 @@
+cabal-version: 3.0
+name:          haskell-layout-parser
+version:       0.1.0.0
+license:       MIT
+license-file:  LICENSE
+author:        Arnau Abella
+maintainer:    arnauabella@gmail.com
+category:      Educative
+build-type:    Simple
+
+source-repository head
+  type:     git
+  location: https://github.com/monadplus/haskell-layout-parser.git
+
+common warnings
+  ghc-options: -Wall
+
+library
+  import:             warnings
+  exposed-modules:
+    Lexer
+    Lexer.Support
+    Parser
+    Syntax
+
+  -- other-modules:
+
+  build-tool-depends:
+    , alex:alex    ^>=3.2
+    , happy:happy  ^>=1.20
+
+  build-depends:
+    , array       ^>=0.5
+    , base        ^>=4.16
+    , bytestring  ^>=0.11
+    , containers  ^>=0.6
+    , directory   ^>=1.3
+    , filepath    ^>=1.4
+    , mtl         ^>=2.3
+
+  hs-source-dirs:     src
+  default-language:   Haskell2010
+
+executable haskell-layout-parser
+  import:           warnings
+  main-is:          Main.hs
+  build-depends:
+    , base           ^>=4.16
+    , haskell-layout-parser
+
+  hs-source-dirs:   app
+  default-language: Haskell2010
